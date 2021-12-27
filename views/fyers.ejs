@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Fyers</title>
+</head>
+
+<body>
+    <form action="/home" method="post">
+        
+        <h2>Stock Name</h2>
+        <input list="sn" name="sn">
+        <datalist id="sn">
+        <option value='NSE:TCS-EQ'> </option>
+        <option value='NSE:SBIN-EQ'> </option>
+        <option value='NSE:MARUTI-EQ'> </option>
+        <option value='NSE:RELIANCE-EQ'> </option>
+        <option value='NSE:WIPRO-EQ'> </option>
+        <option value='NSE:ICICIBANK-EQ'> </option>
+    </datalist>
+
+        <h4>Choose your favourable TimeFrame:</h4>
+        <input list="tf" name="tf">
+            <datalist id="tf">
+            <option value="1 minutes">
+            <option value="2 minutes">
+            <option value="3 minutes">
+            <option value="5 minutes">
+            <option value="10 minutes">
+            <option value="15 minutes">
+            <option value="20 minutes">
+            <option value="30 minutes">
+            <option value="60 minutes">
+            <option value="120 minutes">
+            <option value="240 minutes">
+            <option value="1 day">
+
+        </datalist>
+        <h4>Choose what your Date Range is:</h4>
+        <label for="dr">Date Range:</label>
+        <input type="date" id="dr" name="dr1"> To
+       
+         <input type="date" id="dr" name="dr2"><br>
+        <button type="submit" name="button">GO </button>
+
+    </form>
+    <form action="/download" method="post">
+        <button name="download" type="submit"> Download</button>
+    </form>
+    <table>
+        <tr>
+            <th>Current time</th>
+            <th>Open Value</th>
+            <th>Highest Value</th>
+            <th>Lowest Value</th>
+            <th>Close Value</th>
+            <th> Volume</th>
+        </tr>
+        
+      <%  for( i=0;i<candles.length; i++){ %>
+          <tr>
+                <td><%=candles[i][0]%> </td>
+                <td><%=candles[i][1]%> </td>
+                <td><%=candles[i][2]%> </td>
+                <td><%=candles[i][3]%> </td>
+                <td><%=candles[i][4]%> </td> 
+                <td><%=candles[i][5]%> </td>
+            </tr>
+        <%}%>
+
+    </table>
+    
+</body>
+
+</html>

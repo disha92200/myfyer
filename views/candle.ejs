@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>candles</title>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>Current time</th>
+            <th>Open Value</th>
+            <th>Highest Value</th>
+            <th>Lowest Value</th>
+            <th>Close Value</th>
+            <th> Volume</th>
+        </tr>
+        
+      <%  for( i=0;i<candles.length; i++){ %>
+          <tr>
+                <td><%=candles[i][0]%> </td>
+                <td><%=candles[i][1]%> </td>
+                <td><%=candles[i][2]%> </td>
+                <td><%=candles[i][3]%> </td>
+                <td><%=candles[i][4]%> </td> 
+                <td><%=candles[i][5]%> </td>
+            </tr>
+        <%}%>
+
+    </table>
+</body>
+</html>
