@@ -62,9 +62,6 @@
         
       <%  for( i=0;i<candles.length; i++){ %>
           <tr>
-                
-                <% d=new Date(candles[i][0] * 1000) %>
-                <% candles[i][0]=d.toLocaleString() %>
                 <td><%=candles[i][0]%> </td>
                 <td><%=candles[i][1]%> </td>
                 <td><%=candles[i][2]%> </td>
