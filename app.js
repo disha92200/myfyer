@@ -16,7 +16,7 @@ let auth = " ";
 
 
 app.listen(8080, function () {
-    console.log("Hello");
+    console.log("Listening at 8080 port");
 })
 
 const fyers = require("fyers-api-v2");
@@ -74,6 +74,7 @@ app.post("/home", function (req, res) {
 
         const candlearray=result.candles;
         candlelist=Object.values(candlearray)
+        //console.log(candlelist)
         res.redirect("/home");
 
         writeToCSVFile(candlelist)
@@ -91,7 +92,7 @@ app.get("/auth", function (req, res) {
 
     res.redirect("/home");
     auth = req.query.auth_code;
-    console.log(auth)
+    //console.log(auth)
 
     const reqBody = {
         auth_code: auth,
@@ -99,7 +100,7 @@ app.get("/auth", function (req, res) {
     }
     fyers.generate_access_token(reqBody).then((response) => {
 
-        console.log(response)
+        //console.log(response)
 
         access_token = response.access_token;
         fyers.setAccessToken(access_token);
@@ -124,3 +125,7 @@ app.get("/auth", function (req, res) {
     );
     return header.concat(rows).join("\n");
   }
+
+ 
+
+  
