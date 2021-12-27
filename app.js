@@ -6,7 +6,7 @@ const secret=require("./secret.js");
 const csv=require("csv-parser");
 const fs=require("fs");
 const app = express();
-
+let title="Stock name Date range";
 
 app.set("view engine", "ejs");
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -37,8 +37,9 @@ app.post("/download",function(req,res){
     })
 })
 app.get("/home", function (req, res) {
-    res.render("fyers",{candles:candlelist});
+    res.render("fyers",{Title:title,candles:candlelist});
    candlelist=[];
+   title="Stock name Date range"
 
 })
 
@@ -60,7 +61,7 @@ app.post("/home", function (req, res) {
     }
     console.log(timeframe)
 
-
+    title=stockname+" "+startdate+" to "+lastdate;
     console.log(stockname, timeframe, startdate, lastdate);
     async function getHistory() {
         let history = new fyers.history()
@@ -119,9 +120,9 @@ app.get("/auth", function (req, res) {
     });
   }
   function extractAsCSV(candlelists) {
-    const header = ["Epoc Time,Open value,Highest value,Lowest value,Close value,Volume"];
+    const header = ["Epoch Time,Open value,Highest value,Lowest value,Close value,Volume"];
     const rows = candlelists.map(candle =>
-       `${candle[0]}, ${candle[1]}, ${candle[2]},${candle[3]},${candle[4]},${candle[5]}`
+       `${(new Date(candle[0] * 1000)).toLocaleString()}, ${candle[1]}, ${candle[2]},${candle[3]},${candle[4]},${candle[5]}`
     );
     return header.concat(rows).join("\n");
   }
